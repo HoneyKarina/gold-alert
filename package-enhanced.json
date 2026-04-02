@@ -1,0 +1,94 @@
+{
+  "name": "gold-alert-enhanced",
+  "version": "2.0.0",
+  "description": "智能金价预警系统 - 增强版（支持机器学习预测、多数据源、企业级API）",
+  "main": "src/index-enhanced.ts",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx src/index-enhanced.ts",
+    "dev": "npx tsx watch src/index-enhanced.ts",
+    "server": "npx tsx src/server-enhanced.ts",
+    "web": "npx tsx src/index-enhanced.ts & npx tsx src/server-enhanced.ts",
+    "enhanced": "npx tsx src/index-enhanced.ts",
+    "api": "npx tsx src/server-enhanced.ts",
+    "test": "npx jest",
+    "test:watch": "npx jest --watch",
+    "build": "npx tsup src/index-enhanced.ts src/server-enhanced.ts src/alert-engine-enhanced.ts src/price-fetcher-enhanced.ts --format esm",
+    "deploy": "npm run build && npm run deploy:docker",
+    "deploy:docker": "docker build -t gold-alert-enhanced:latest .",
+    "logs": "tail -f logs/gold-alert.log",
+    "clean": "rm -rf node_modules package-lock.json && npm install",
+    "health": "curl http://localhost:3000/api/health",
+    "test-notifications": "npx tsx test/notifications.test.ts"
+  },
+  "keywords": [
+    "gold",
+    "price",
+    "alert",
+    "trading",
+    "finance",
+    "real-time",
+    "websocket",
+    "machine-learning",
+    "ai",
+    "api",
+    "notification",
+    "feishu",
+    "telegram",
+    "email",
+    "monitoring"
+  ],
+  "dependencies": {
+    "@types/nodemailer": "^7.0.11",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^8.0.4",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "rate-limiter-flexible": "^5.0.3",
+    "axios": "^1.6.0",
+    "ws": "^8.14.2",
+    "winston": "^3.11.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.10",
+    "@types/cors": "^2.8.17",
+    "@types/compression": "^1.7.5",
+    "@types/uuid": "^9.0.7",
+    "@types/jest": "^29.5.8",
+    "jest": "^29.7.0",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3",
+    "nodemon": "^3.0.2"
+  },
+  "author": "Karina",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/gold-alert-enhanced.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/gold-alert-enhanced/issues"
+  },
+  "homepage": "https://github.com/your-username/gold-alert-enhanced#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "config": {
+    "port": 3000,
+    "host": "localhost",
+    "env": "development"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
